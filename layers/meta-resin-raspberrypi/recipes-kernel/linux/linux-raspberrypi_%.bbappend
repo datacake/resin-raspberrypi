@@ -4,6 +4,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " \
 	file://0001-Revert-cgroup-Disable-cgroup-memory-by-default.patch \
+    file://0003-Add-max3191x-gpio-driver.patch \
 	"
 
 # Set console accordingly to build type
@@ -50,6 +51,10 @@ RESIN_CONFIGS_append = " pca955_gpio_expander"
 RESIN_CONFIGS[pca955_gpio_expander] = " \
     CONFIG_GPIO_PCA953X=y \
     CONFIG_GPIO_PCA953X_IRQ=y \
+    "
+RESIN_CONFIGS_append = " max3191x"
+RESIN_CONFIGS[max3191x] = " \
+    CONFIG_GPIO_MAX3191X=y \
     "
 
 KERNEL_MODULE_AUTOLOAD += "bcm2708_wdog"
